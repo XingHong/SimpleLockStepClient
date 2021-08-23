@@ -1,5 +1,7 @@
 ﻿public class BaseService : ServiceReferenceHolder, ILifeCycle, IService, IHashCode
 {
+    public virtual void DoInit(object objParent) { }
+
     public virtual void DoAwake(IServiceContainer container) { }
 
     public virtual void DoDestroy() { }
