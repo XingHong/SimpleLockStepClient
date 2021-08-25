@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
+public delegate void GlobalEventHandler(object param);
 public class EventHelper
 {
-    public delegate void GlobalEventHandler(object param);
 
     private static Dictionary<int, List<GlobalEventHandler>> allListeners =
     new Dictionary<int, List<GlobalEventHandler>>();

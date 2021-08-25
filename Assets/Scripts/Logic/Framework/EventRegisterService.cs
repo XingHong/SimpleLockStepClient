@@ -10,15 +10,17 @@ public class EventRegisterService : IEventRegisterService
 
     public void RegisterEvent(object obj)
     {
-
+        RegisterEvent<EEvent, GlobalEventHandler>("OnEvent_", EventHelper.AddListener, obj);
     }
 
     public void UnRegisterEvent(object obj)
     {
-        throw new NotImplementedException();
+        RegisterEvent<EEvent, GlobalEventHandler>("OnEvent_",EventHelper.RemoveListener, obj);
     }
 
-    void IEventRegisterService.RegisterEvent<TEnum, TDelegate>(string prefix, Action<TEnum, TDelegate> callBack, object obj)
+    public void RegisterEvent<TEnum, TDelegate>(string prefix, Action<TEnum, TDelegate> callBack, object obj)
+    where TDelegate : Delegate
+    where TEnum : struct
     {
         if (callBack == null) return;
         var methods = obj.GetType().GetMethods(BindingFlags.Public | BindingFlags.NonPublic |
