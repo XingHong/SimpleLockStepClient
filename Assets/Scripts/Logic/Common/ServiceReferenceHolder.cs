@@ -8,6 +8,7 @@
     protected ICommonStateService commonStateService;
     protected IRandomService randomService;
     protected IInputService inputService;
+    protected IEffectService effectService;
 
     protected T GetService<T>() where T : IService
     {
@@ -24,5 +25,6 @@
         commonStateService = serviceContainer.GetService<ICommonStateService>();
         randomService = serviceContainer.GetService<IRandomService>();
         inputService = serviceContainer.GetService<IInputService>();
+        effectService = serviceContainer.GetService<IEffectService>();
     }
 }
