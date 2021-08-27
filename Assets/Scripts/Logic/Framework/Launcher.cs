@@ -56,12 +56,19 @@ public class Launcher : ILifeCycle
     }
 
     public void DoUpdate(float deltaTime)
-    { 
+    {
+
     }
 
     public void DoDestroy()
     {
-        
+        if (Instance == null)
+            return;
+        foreach (var mgr in mgrContainer.AllMgrs)
+        {
+            mgr.DoDestroy();
+        }
+        Instance = null;
     }
 
     public void OnApplicationQuit()
