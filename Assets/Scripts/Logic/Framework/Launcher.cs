@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Debug = UnityEngine.Debug;
 
 public class Launcher : ILifeCycle
 {
@@ -53,6 +54,8 @@ public class Launcher : ILifeCycle
         {
             mgr.DoStart();
         }
+
+        EventHelper.Trigger(EEvent.Test);
     }
 
     public void DoUpdate(float deltaTime)

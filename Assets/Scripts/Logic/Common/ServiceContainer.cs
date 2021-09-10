@@ -10,6 +10,7 @@ public class ServiceContainer : IServiceContainer
     {
         var interfaceTypes = service.GetType().FindInterfaces((type, criteria) =>
         type.GetInterfaces().Any(t => t == typeof(IService)), service).ToArray();
+
         foreach (var type in interfaceTypes)
         {
             if (!allServices.ContainsKey(type))

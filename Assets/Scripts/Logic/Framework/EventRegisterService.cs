@@ -31,7 +31,7 @@ public class EventRegisterService : IEventRegisterService
             var methodName = method.Name;
             if (methodName.StartsWith(prefix))
             {
-                var eventTypeStr = methodName.Substring(ignorePrefixLen);
+                var eventTypeStr = methodName.Substring(ignorePrefixLen + 1);
                 if (Enum.TryParse(eventTypeStr, out TEnum eType))
                 {
                     try

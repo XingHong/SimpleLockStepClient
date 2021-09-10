@@ -10,7 +10,6 @@ public class MainScript : MonoBehaviour
     void Awake()
     {
         serviceContainer = new BaseGameServicesContainer();
-
         GameLauncher.DoAwake(serviceContainer);
     }
 
