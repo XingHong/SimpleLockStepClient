@@ -1,6 +1,7 @@
 ﻿public class ServiceReferenceHolder
 {
     protected IServiceContainer serviceContainer;
+    protected IManagerContainer managerContainer;
     protected IMapService mapService;
     protected IEventRegisterService eventRegiserService;
     protected IIdService idService;
@@ -15,9 +16,10 @@
         return serviceContainer.GetService<T>();
     }
 
-    public virtual void InitReference(IServiceContainer serviceContainer)
+    public virtual void InitReference(IServiceContainer serviceContainer, IManagerContainer managerContainer)
     {
         this.serviceContainer = serviceContainer;
+        this.managerContainer = managerContainer;
         mapService = serviceContainer.GetService<IMapService>();
         eventRegiserService = serviceContainer.GetService<IEventRegisterService>();
         idService = serviceContainer.GetService<IIdService>();

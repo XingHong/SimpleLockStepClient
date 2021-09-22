@@ -37,7 +37,7 @@ public class Launcher : ILifeCycle
     {
         foreach (var mgr in mgrContainer.AllMgrs)
         {
-            mgr.InitReference(serviceContainer);
+            mgr.InitReference(serviceContainer, mgrContainer);
         }
 
         foreach (var mgr in mgrContainer.AllMgrs)
