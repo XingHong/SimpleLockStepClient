@@ -17,7 +17,8 @@ public class SimulatorService : BaseGameService, ISimulatorService
     LFloat fInterpolation;
 
     public void DoUpdate(float deltaTime)
-    { 
+    {
+        UpdateLogic(deltaTime);
     }
 
     /// <summary>
