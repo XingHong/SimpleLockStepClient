@@ -1,6 +1,4 @@
-﻿
-
-public class EntityComponent : BaseComponent
+﻿public class EntityComponent : BaseComponent
 {
   
 

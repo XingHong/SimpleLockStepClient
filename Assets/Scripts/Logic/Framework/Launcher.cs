@@ -56,6 +56,7 @@ public class Launcher : ILifeCycle
         }
 
         EventHelper.Trigger(EEvent.Test);
+        EventHelper.Trigger(EEvent.OnGameCreate);
     }
 
     public void DoUpdate(float deltaTime)
