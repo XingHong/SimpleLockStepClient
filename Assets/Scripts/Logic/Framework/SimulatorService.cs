@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Lockstep.Math;
+//using Debug = Lockstep.Logging.Debug;
 using Debug = UnityEngine.Debug;
 
 public class SimulatorService : BaseGameService, ISimulatorService
@@ -16,6 +17,18 @@ public class SimulatorService : BaseGameService, ISimulatorService
     //两帧之间的时间差
     LFloat fInterpolation;
 
+    World world;
+
+    public override void DoStart()
+    {
+        world = new World();
+        int a = 1;
+        int b = 20;
+        fFrameLen = (LFloat)a / (LFloat)b;
+        fAccumilatedTime = LFloat.zero;
+        fNextGameTime = LFloat.zero;
+    }
+
     public void DoUpdate(float deltaTime)
     {
         UpdateLogic(deltaTime);
@@ -24,7 +37,7 @@ public class SimulatorService : BaseGameService, ISimulatorService
     /// <summary>
     /// 单机帧同步
     /// </summary>
-    public void UpdateLogic(float deltaTime)
+    private void UpdateLogic(float deltaTime)
     {
         /**************以下是帧同步的核心逻辑*********************/
         fAccumilatedTime = fAccumilatedTime + (LFloat)deltaTime;

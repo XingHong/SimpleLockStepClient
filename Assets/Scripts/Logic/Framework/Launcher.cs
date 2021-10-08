@@ -7,6 +7,7 @@ public class Launcher : ILifeCycle
     private ServiceContainer serviceContainer;
     private ManagerContainer mgrContainer;
     private IEventRegisterService eventService;
+    private SimulatorService simulatorService;
 
     public static Launcher Instance { get; private set; }
 
@@ -31,6 +32,8 @@ public class Launcher : ILifeCycle
         }
 
         serviceContainer.RegisterService(eventService);
+
+        simulatorService = serviceContainer.GetService<ISimulatorService>() as SimulatorService;
     }
 
     public void DoStart()
@@ -61,7 +64,7 @@ public class Launcher : ILifeCycle
 
     public void DoUpdate(float deltaTime)
     {
-
+        simulatorService.DoUpdate(deltaTime);
     }
 
     public void DoDestroy()
