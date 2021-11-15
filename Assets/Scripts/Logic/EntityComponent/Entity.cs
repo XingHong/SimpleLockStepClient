@@ -1,18 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
 
-public class Entity : MonoBehaviour
+using Lockstep.Math;
+
+public partial class Entity : BaseEntity
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public LFloat moveSpd = 5;
+    public LFloat turnSpd = 360;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

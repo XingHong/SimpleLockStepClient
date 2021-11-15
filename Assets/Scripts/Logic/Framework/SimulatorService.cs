@@ -27,6 +27,8 @@ public class SimulatorService : BaseGameService, ISimulatorService
         fFrameLen = (LFloat)a / (LFloat)b;
         fAccumilatedTime = LFloat.zero;
         fNextGameTime = LFloat.zero;
+
+        world.StartSimulate(serviceContainer, managerContainer);
     }
 
     public void DoUpdate(float deltaTime)
@@ -64,8 +66,17 @@ public class SimulatorService : BaseGameService, ISimulatorService
         /**************帧同步的核心逻辑完毕*********************/
     }
 
+    private void OnGameCreate()
+    { 
+    }
+
     void OnEvent_Test(object param)
     {
         Debug.Log("OnEvent_Test!!!");
+    }
+
+    void OnEvent_OnGameCreate(object param)
+    {
+        OnGameCreate();
     }
 }

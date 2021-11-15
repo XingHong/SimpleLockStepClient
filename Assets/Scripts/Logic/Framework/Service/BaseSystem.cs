@@ -1,5 +1,5 @@
 ﻿using Lockstep.Math;
-public class BaseSystem : BaseService
+public class BaseSystem : BaseGameService
 {
     public bool Enable = true;
     public virtual void DoUpdate(LFloat deltaTime) { }

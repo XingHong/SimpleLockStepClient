@@ -26,12 +26,31 @@ public class World : BaseSystem
         }
     }
 
-    private void RegisterSystems()
+    public void StartGame()
     { 
+    }
+
+    private void RegisterSystems()
+    {
+        RegisterSystem(new HeroSystem());
     }
 
     private void RegisterSystem(BaseSystem mgr)
     {
         systems.Add(mgr);
+    }
+
+    public override void DoDestroy()
+    {
+        base.DoDestroy();
+        foreach (var mgr in systems)
+        {
+            mgr.DoDestroy();
+        }
+    }
+
+    public override void OnApplicationQuit()
+    {
+        DoDestroy();
     }
 }
