@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using Lockstep.Math;
+using System.Collections;
 using System.Collections.Generic;
 
 public class World : BaseSystem
 {
     private List<BaseSystem> systems = new List<BaseSystem>();
+    public int Tick { get; set; }
 
     public void StartSimulate(IServiceContainer serviceContainer, IManagerContainer mgrContainer)
     {
@@ -24,6 +26,7 @@ public class World : BaseSystem
         {
             mgr.DoStart();
         }
+        Tick = 0;
     }
 
     public void StartGame()
@@ -38,6 +41,19 @@ public class World : BaseSystem
     private void RegisterSystem(BaseSystem mgr)
     {
         systems.Add(mgr);
+    }
+
+    public void Step()
+    {
+        var deltaTime = new LFloat(true, 30);
+        foreach (var system in systems)
+        {
+            if (system.Enable)
+            {
+                system.DoUpdate(deltaTime);
+            }
+        }
+        Tick++;
     }
 
     public override void DoDestroy()

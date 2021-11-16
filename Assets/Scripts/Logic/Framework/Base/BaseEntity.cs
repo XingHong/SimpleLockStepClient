@@ -14,6 +14,7 @@ public class BaseEntity : BaseLifeCycle
 
     public IGameStateService GameStateService { get; set; }
     public IServiceContainer ServiceContainer { get; set; }
+    public IDebugService DebugService { get; set; }
 
     public T GetService<T>() where T : IService
     {

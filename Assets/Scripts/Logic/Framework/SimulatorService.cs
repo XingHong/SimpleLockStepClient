@@ -14,16 +14,13 @@ public class SimulatorService : BaseGameService, ISimulatorService
     //预定的每帧的时间长度
     LFloat fFrameLen;
 
-    //两帧之间的时间差
-    LFloat fInterpolation;
-
     World world;
 
     public override void DoStart()
     {
         world = new World();
         int a = 1;
-        int b = 20;
+        int b = 33;
         fFrameLen = (LFloat)a / (LFloat)b;
         fAccumilatedTime = LFloat.zero;
         fNextGameTime = LFloat.zero;
@@ -49,7 +46,7 @@ public class SimulatorService : BaseGameService, ISimulatorService
         {
 
             //运行与游戏相关的具体逻辑
-            //battleLogic.FrameLockLogic();
+            world.Step();
 
             //计算下一个逻辑帧应有的时间
             fNextGameTime += fFrameLen;
@@ -57,13 +54,6 @@ public class SimulatorService : BaseGameService, ISimulatorService
             //游戏逻辑帧自增
             //GameData.g_uGameLogicFrame += 1;
         }
-
-        //计算两帧的时间差,用于运行补间动画
-        fInterpolation = (fAccumilatedTime + fFrameLen - fNextGameTime) / fFrameLen;
-
-        //更新表现层绘制位置
-        //m_callUnit.updateRenderPosition(m_fInterpolation);
-        /**************帧同步的核心逻辑完毕*********************/
     }
 
     private void OnGameCreate()
