@@ -30,7 +30,6 @@ public class InputMono : MonoBehaviour
         {
             op = 4;
         }
-
         GameInputService.CurGameInput = new PlayerInput()
         {
             op = op,

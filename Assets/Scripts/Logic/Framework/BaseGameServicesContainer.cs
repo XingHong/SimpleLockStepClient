@@ -6,5 +6,6 @@ public class BaseGameServicesContainer : ServiceContainer
     public BaseGameServicesContainer()
     {
         RegisterService(new SimulatorService());
+        RegisterService(new GameStateService());
     }
 }
