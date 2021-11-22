@@ -10,6 +10,7 @@
     protected IRandomService randomService;
     protected IInputService inputService;
     protected IEffectService effectService;
+    protected IDebugService debugService;
 
     protected T GetService<T>() where T : IService
     {
@@ -28,5 +29,6 @@
         randomService = serviceContainer.GetService<IRandomService>();
         inputService = serviceContainer.GetService<IInputService>();
         effectService = serviceContainer.GetService<IEffectService>();
+        debugService = serviceContainer.GetService<IDebugService>();
     }
 }

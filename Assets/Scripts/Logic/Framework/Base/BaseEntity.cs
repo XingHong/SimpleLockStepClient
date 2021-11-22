@@ -16,6 +16,8 @@ public class BaseEntity : BaseLifeCycle
     public IServiceContainer ServiceContainer { get; set; }
     public IDebugService DebugService { get; set; }
 
+    public IEntityView EntityView;
+
     public T GetService<T>() where T : IService
     {
         return ServiceContainer.GetService<T>();
@@ -77,4 +79,10 @@ public class BaseEntity : BaseLifeCycle
         }
     }
 
+    public virtual void OnRollbackDestroy()
+    {
+        EntityView?.OnRollbackDestroy();
+        EntityView = null;
+        engineTransform = null;
+    }
 }

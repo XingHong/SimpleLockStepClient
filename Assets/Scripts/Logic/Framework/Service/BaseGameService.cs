@@ -7,6 +7,7 @@ public class BaseGameService : BaseService
     protected IGameEffectService gameEffectService;
     protected IGameResourceService gameResourceService;
     protected IGameStateService gameStateService;
+    protected IGameViewService gameViewService;
 
     public override void InitReference(IServiceContainer serviceContainer, IManagerContainer managerContainer)
     {
@@ -15,5 +16,6 @@ public class BaseGameService : BaseService
         gameEffectService = serviceContainer.GetService<IGameEffectService>();
         gameResourceService = serviceContainer.GetService<IGameResourceService>();
         gameStateService = serviceContainer.GetService<IGameStateService>();
+        gameViewService = serviceContainer.GetService<IGameViewService>();
     }
 }
