@@ -30,7 +30,8 @@ public class World : BaseSystem
     }
 
     public void StartGame()
-    { 
+    {
+        gameStateService.CreateEntity<Player>(0, LVector3.zero);
     }
 
     private void RegisterSystems()

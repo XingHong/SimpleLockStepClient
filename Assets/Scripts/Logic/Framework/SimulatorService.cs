@@ -16,6 +16,16 @@ public class SimulatorService : BaseGameService, ISimulatorService
 
     World world;
 
+    public bool IsRunning { get; set; }
+
+    public void StartSimulate()
+    {
+        if (IsRunning)
+            return;
+        IsRunning = true;
+        world.StartGame();
+    }
+
     public override void DoStart()
     {
         world = new World();
@@ -30,6 +40,8 @@ public class SimulatorService : BaseGameService, ISimulatorService
 
     public void DoUpdate(float deltaTime)
     {
+        if (!IsRunning)
+            return;
         UpdateLogic(deltaTime);
     }
 
@@ -67,6 +79,7 @@ public class SimulatorService : BaseGameService, ISimulatorService
 
     void OnEvent_OnGameCreate(object param)
     {
-        OnGameCreate();
+        Debug.Log("OnGameCreate!!!");
+        StartSimulate();
     }
 }

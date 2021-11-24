@@ -10,7 +10,7 @@ public class MainScript : MonoBehaviour
     void Awake()
     {
         gameObject.AddComponent<InputMono>();
-        serviceContainer = new BaseGameServicesContainer();
+        serviceContainer = new UnityServiceContainer();
         GameLauncher.DoAwake(serviceContainer);
     }
 
