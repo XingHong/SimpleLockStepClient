@@ -8,5 +8,6 @@ public class BaseGameServicesContainer : ServiceContainer
         RegisterService(new SimulatorService());
         RegisterService(new GameStateService());
         RegisterService(new GameResourceService());
+        RegisterService(new IdService());
     }
 }

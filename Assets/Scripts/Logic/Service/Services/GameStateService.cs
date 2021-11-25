@@ -29,7 +29,7 @@ public class GameStateService : BaseGameService, IGameStateService
     public T CreateEntity<T>(int prefabId, LVector3 position) where T : BaseEntity, new()
     {
         var baseEntity = new T();
-        //baseEntity.EntityId = idService.GenId();
+        baseEntity.EntityId = idService.GenId();
         baseEntity.EntityId = 1;
         baseEntity.PrefabId = prefabId;
         baseEntity.GameStateService = gameStateService;
